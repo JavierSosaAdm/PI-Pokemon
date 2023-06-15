@@ -10,7 +10,9 @@ const getTypes = async () => {
     }
 };
 
+
 module.exports = {getTypes};
+
 
 
 // const { Type } = require('../../db');

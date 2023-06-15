@@ -1,6 +1,6 @@
 const axios = require('axios');
 require('dotenv').config();
-const { API_URL } = process.env;
+const { API_URL, } = process.env;
 const parsePokemonFromApi = require('../helpers/parsePokemon');
 
 const populateDb = async (Pokemon, Type) => {
@@ -45,9 +45,6 @@ const populateDb = async (Pokemon, Type) => {
 };
 
 module.exports = populateDb;
-
-
-
 
 
 
