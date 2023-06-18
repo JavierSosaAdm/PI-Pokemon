@@ -1,4 +1,4 @@
-import style from 'poke-create.module.css'; 
+// import style from 'poke-create.module.css'; 
 
 const PokeCreate = () => {};
 

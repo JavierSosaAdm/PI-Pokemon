@@ -14,6 +14,7 @@ const createPokemon = async ({ name, image, life, attack, defense, speed, height
         weight, 
         created: true
     });
+    
     if (Array.isArray(types)) {
 
         for (const type of types) {

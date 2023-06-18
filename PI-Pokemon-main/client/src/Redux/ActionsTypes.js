@@ -8,4 +8,4 @@ export const DELETE_POKEMON = 'DELETE_POKEMON';
 
 export const FILTER = 'FILTER';
 
-export const ORDER = 'ORDER'; 
+export const ORDER = 'ORDER';
