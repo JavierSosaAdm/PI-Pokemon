@@ -9,7 +9,7 @@ const Form = () => {
     const { types } = useSelector(state => state);
     const [selectedTypes, setSelectedTypes] = useState([]);
 
-    useEffect(() => {
+    useEffect(() => { // llama a getTypes con dispatch, cada vez que se monta componente o cambie el dispatch, para obtener tipos de poke y actualizar estado 
         dispatch(GetTypes());
     }, [dispatch]);
 
@@ -45,7 +45,7 @@ const Form = () => {
         validate({ ...form, [property]: value }); // valida la actualización de forminario
     };
 
-    const validate = (form) => {
+    const validate = (form) => { // validaciones de datos de form
         if (/^[A-Z][a-z]*$/.test(form.name)) {
             errors = {...errors, name: ''}
         } else {
@@ -97,7 +97,7 @@ const Form = () => {
         setErrors(errors);
     }
 
-    const submitHandler = (event) => {
+    const submitHandler = (event) => { // enviar el form a la dataBase junto con una prop types que viene de selectedTypes
         event.preventDefault();
         axios.post('http//localhost:3001', {...form, types: selectedTypes})
         .them(response => alert('Your Pokemon was successfully created'))
@@ -149,12 +149,12 @@ const Form = () => {
             
             <div>
                 <label>Select Types</label>
-                <div>
-                    {types.map((type) => 
+                <div> 
+                    {types.map((type) => //este fragmento de código genera una lista de tipos de Pokémon con checkboxes, permitiendo al usuario seleccionar hasta 2 tipos. Los cambios en la selección se reflejan en el estado selectedTypes utilizando la función setSelectedTypes.
                     <div key={type.id}>
                         <p>{type.name}</p>
-                        <imput type= 'chackbox' name={`type-${type.id}`} 
-                        checked={selectedTypes.some(t => t.id === type.id)}
+                        <imput type= 'chackbox' name={`type-${type.id}`} // checkbox muestra opciones multiples de una casilla de verificacion y name proporciona una identificacion unica a cada checkbox
+                        checked={selectedTypes.some(t => t.id === type.id)} // se utiliza para determinar si el checkbox debe estar marcado o no. ".some()" Se utiliza para verificar si al menos un elemento del array cumple con una condición específica.
                         onChange={(e) => {
                             if (selectedTypes.some(t => t.id === type.id)) {
                                 setSelectedTypes(selectedTypes.filter(t => t.id !== type.id));
@@ -169,10 +169,24 @@ const Form = () => {
                     )}
                 </div>
             </div>
+
+            <button type='submit' desabled={ // desabilitar en caso de que pase alguna de esatas condiciones
+                form.name === '' ||
+                errors.name !== '' ||
+                errors.image !== '' ||
+                errors.life !== '' ||
+                errors.attack !== '' ||
+                errors.defense !== '' ||
+                errors.speed !== '' ||
+                errors.height !== '' ||
+                errors.weight !== '' ||
+                selectedTypes.length === 0
+            } >
+                SUBMIT
+            </button>
+
         </form>
     )
 };
-
-
 
 export default Form;
