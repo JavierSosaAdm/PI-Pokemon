@@ -16,7 +16,6 @@ const Form = () => {
     const [form, setForm] = useState({
         name: '',
         image: '',
-        backImage:'',
         life: '',
         attack: '',
         defense: '',
@@ -28,7 +27,6 @@ const Form = () => {
     let [errors, setErrors] = useState({
         name: '',
         image: '',
-        backImage:'',
         life: '',
         attack: '',
         defense: '',
@@ -76,22 +74,22 @@ const Form = () => {
             errors = {...errors, defense: 'The field must be numeric, using integers from 0 to 100'}
         }
 
-        if (/^([1-9][0-9]?|100)$/.test(form.speed)) {
+        if (/^[1-9]\d*$/.test(form.speed)) {
             errors = {...errors, speed: ''}
         } else {
-            errors = {...errors, speed: 'The field must be numeric, using integers from 0 to 100'}
+            errors = {...errors, speed: 'Field must be numeric, positive integer'}
         }
 
-        if (/^([1-9][0-9]?|100)$/.test(form.height)) {
+        if (/^(0|[1-9]\d*)(\.\d+)?m$/.test(form.height)) {
             errors = {...errors, height: ''}
         } else {
-            errors = {...errors, height: 'The field must be numeric, using integers from 0 to 100'}
+            errors = {...errors, height: 'The field must be an integer or decimal number'}
         }
 
-        if (/^([1-9][0-9]?|100)$/.test(form.weight)) {
+        if (/^(0|[1-9]\d*)(\.\d+)?kg$/.test(form.weight)) {
             errors = {...errors, weight: ''}
         } else {
-            errors = {...errors, weight: 'The field must be numeric, using integers from 0 to 100'}
+            errors = {...errors, weight: 'The field must be an integer or decimal number'}
         }
 
         setErrors(errors);
