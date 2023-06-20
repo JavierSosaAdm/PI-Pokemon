@@ -62,9 +62,22 @@ const getPokemonById = async (id) => {
     }
 }
 
+const getPokemonByName = async (name) => {
+    try {
+        const pokemon = await Pokemon.findOne({
+            where: {
+                name: name,
+            }
+        });
+        return pokemon;
+    } catch (error) {
+        throw new Error(`Error al buscar el pokemon por nombre: ${error.message}`);
+    }
+}
 
 
-module.exports = { getPokemons, getPokemonById };
+
+module.exports = { getPokemons, getPokemonById, getPokemonByName };
 
 
 

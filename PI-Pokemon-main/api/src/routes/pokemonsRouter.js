@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getPokemonById, getPokemons } = require("../controllers/getPokemons");
+const { getPokemonById, getPokemons, getPokemonByName } = require("../controllers/getPokemons");
 const createPokemon = require('../controllers/createPokemon');
 
 const pokemonsRouter = Router();
@@ -13,6 +13,11 @@ pokemonsRouter.get("/:id", async (req, res) => {
     const pokemon = await getPokemonById(req.params.id);
     res.send(pokemon);
 });
+
+pokemonsRouter.get("/name", async (req, res) => {
+    const pokemones = await getPokemonByName(req.params.name);
+    res.send(pokemones);
+})
 
 pokemonsRouter.post("/", async (req, res) => {
     const pokemon = await createPokemon(req.body);
