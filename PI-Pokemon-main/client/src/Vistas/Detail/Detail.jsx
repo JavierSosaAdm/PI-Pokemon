@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios';
-// import style from 'Detail.module.css'; 
+import style from './detail.module.css'; 
 
 const Detail = () => {
 
@@ -37,12 +37,12 @@ const Detail = () => {
     }
 
     return (
-        <div>
+        <div className={style.detail} >
             {pokemon ? (
                 <>
                 
                 <h2>{pokemon.name}</h2>
-                <img src={shy ? pokemon.backImage : pokemon.image} alt="pokeImg"/>
+                <img className={style.image} src={shy ? pokemon.backImage : pokemon.image} alt="pokeImg"/>
                 <p>Life: {pokemon.life}</p>
                 <p>Attack: {pokemon.attack}</p>
                 <p>Defense: {pokemon.defense}</p>

@@ -5,7 +5,7 @@ import Filters from '../../Componentes/Filters/Filters';
 import { React, useEffect, useState} from 'react';
 import { GetPokemon, GetTypes } from '../../Redux/Actions';
 import queryString from 'query-string'
-// import style from './Home.module.css'; 
+import style from './home.module.css'; 
 
 
 const Home = () => {
@@ -23,7 +23,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(GetTypes());
-    }, []);
+    }, [dispatch]);
 
 
 
@@ -32,7 +32,7 @@ const Home = () => {
     }, [dispatch, name, currentPage, orderBy, sortBy, created, type]);
 
     return (
-        <div>
+        <div className={style.home}>
             <Filters 
                 orderBy={orderBy}
                 onOrderByChange={(newOrderBy) => setOrderBy(newOrderBy)}

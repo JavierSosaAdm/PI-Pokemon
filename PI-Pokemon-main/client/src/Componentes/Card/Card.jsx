@@ -1,15 +1,15 @@
-// import style from 'card.module.css'; 
+import style from './card.module.css'; 
 import { Link } from 'react-router-dom';
 
 const Card = ({pokemon}) => {
     return (
-        <div>
+        <div className={style.card} >
             <Link to={'/detail'}>
                 <h4>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h4>
             </Link>
-            <img src={pokemon.image} alt="" />
+            <img className={style.cardImg} src={pokemon.image} alt="" />
             {pokemon && pokemon.types.map(type => 
-                <span>
+                <span className={style.name} >
                     {type.name}
                 </span>)}
         </div>

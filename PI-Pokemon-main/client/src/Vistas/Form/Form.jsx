@@ -44,61 +44,64 @@ const Form = () => {
     };
 
     const validate = (form) => { // validaciones de datos de form
+
+        let newErrors = {...errors}
+
         if (/^[A-Z][a-z]*$/.test(form.name)) {
-            errors = {...errors, name: ''}
+            newErrors = {...errors, name: ''}
         } else {
-            errors = {...errors, name: 'Invalid'};
+            newErrors = {...errors, name: 'Invalid'};
         }
         
         if (/^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/.test(form.image)) {
-            errors = {...errors, image: ''}
+            newErrors = {...errors, image: ''}
         } else {
-            errors = {...errors, image: 'Invalid link'}
+            newErrors = {...errors, image: 'Invalid link'}
         }
 
         if (/^([1-9][0-9]?|100)$/.test(form.life)) {
-            errors = {...errors, life: ''}
+            newErrors = {...errors, life: ''}
         } else {
-            errors = {...errors, life: 'The field must be numeric, using integers from 0 to 100'}
+            newErrors = {...errors, life: 'The field must be numeric, using integers from 0 to 100'}
         }
 
         if (/^([1-9][0-9]?|100)$/.test(form.attack)) {
-            errors = {...errors, attack: ''}
+            newErrors = {...errors, attack: ''}
         } else {
-            errors = {...errors, attack: 'The field must be numeric, using integers from 0 to 100'}
+            newErrors = {...errors, attack: 'The field must be numeric, using integers from 0 to 100'}
         }
 
         if (/^([1-9][0-9]?|100)$/.test(form.defense)) {
-            errors = {...errors, defense: ''}
+            newErrors = {...errors, defense: ''}
         } else {
-            errors = {...errors, defense: 'The field must be numeric, using integers from 0 to 100'}
+            newErrors = {...errors, defense: 'The field must be numeric, using integers from 0 to 100'}
         }
 
         if (/^[1-9]\d*$/.test(form.speed)) {
-            errors = {...errors, speed: ''}
+            newErrors = {...errors, speed: ''}
         } else {
-            errors = {...errors, speed: 'Field must be numeric, positive integer'}
+            newErrors = {...errors, speed: 'Field must be numeric, positive integer'}
         }
 
-        if (/^(0|[1-9]\d*)(\.\d+)?m$/.test(form.height)) {
-            errors = {...errors, height: ''}
+        if (/^([1-9]\d*|0)(\.\d+)?$/.test(form.height)) {
+            newErrors = {...errors, height: ''}
         } else {
-            errors = {...errors, height: 'The field must be an integer or decimal number'}
+            newErrors = {...errors, height: 'The field must be an integer and/or decimal'}
         }
 
-        if (/^(0|[1-9]\d*)(\.\d+)?kg$/.test(form.weight)) {
-            errors = {...errors, weight: ''}
+        if (/^([1-9]\d*|0)(\.\d+)?$/.test(form.weight)) {
+            newErrors = {...errors, weight: ''}
         } else {
-            errors = {...errors, weight: 'The field must be an integer or decimal number'}
+            newErrors = {...errors, weight: 'The field must be an integer and/or decimal'}
         }
 
-        setErrors(errors);
+        setErrors(newErrors);
     }
 
     const submitHandler = (event) => { // enviar el form a la dataBase junto con una prop types que viene de selectedTypes
         event.preventDefault();
-        axios.post('http//localhost:3001', {...form, types: selectedTypes})
-        .them(response => alert('Your Pokemon was successfully created'))
+        axios.post('http://localhost:3001/pokemons', {...form, types: selectedTypes})
+        .then(response => alert('Your Pokemon was successfully created'))
         .catch(err => alert(err))
     }
 
@@ -151,7 +154,7 @@ const Form = () => {
                     {types.map((type) => //este fragmento de código genera una lista de tipos de Pokémon con checkboxes, permitiendo al usuario seleccionar hasta 2 tipos. Los cambios en la selección se reflejan en el estado selectedTypes utilizando la función setSelectedTypes.
                     <div key={type.id}>
                         <p>{type.name}</p>
-                        <imput type= 'chackbox' name={`type-${type.id}`} // checkbox muestra opciones multiples de una casilla de verificacion y name proporciona una identificacion unica a cada checkbox
+                        <input type= 'checkbox' name={`type-${type.id}`} // checkbox muestra opciones multiples de una casilla de verificacion y name proporciona una identificacion unica a cada checkbox
                         checked={selectedTypes.some(t => t.id === type.id)} // se utiliza para determinar si el checkbox debe estar marcado o no. ".some()" Se utiliza para verificar si al menos un elemento del array cumple con una condición específica.
                         onChange={(e) => {
                             if (selectedTypes.some(t => t.id === type.id)) {
@@ -168,7 +171,7 @@ const Form = () => {
                 </div>
             </div>
 
-            <button type='submit' desabled={ // desabilitar en caso de que pase alguna de esatas condiciones
+            <button type='submit' disabled={ // desabilitar en caso de que pase alguna de esatas condiciones
                 form.name === '' ||
                 errors.name !== '' ||
                 errors.image !== '' ||
