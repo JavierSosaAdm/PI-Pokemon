@@ -1,0 +1,36 @@
+#form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    flex-wrap: wrap;
+    background-image: url(https://lh3.googleusercontent.com/05JfZ1ZdyzrRNvhJosUFdcjjJRFE7k2KhmeM2ujqeCbrcrCb1hkq7O_JdUBpQ3r9hi0YeSn4WgmKx3Ai8LHdM2SucxSzl9TRZ4fCAqETJ6WtHgE=w1440-e365);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.itemsForm {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    right: 6rem;
+    top: 4.5rem;
+}
+
+.input {
+    background-color: yellow;
+}
+
+.label {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.types {
+    position: relative;
+    display: flex;
+    justify-content:space-around;
+    flex-flow: column wrap
+    
+}

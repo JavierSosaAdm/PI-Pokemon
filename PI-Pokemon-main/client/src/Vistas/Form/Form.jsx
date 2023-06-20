@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { GetTypes } from '../../Redux/Actions';
 import axios from 'axios';
-// import style from 'Form.module.css'; 
+import style from './form.module.css'; 
 
 const Form = () => {
     const dispatch = useDispatch();
@@ -106,54 +106,54 @@ const Form = () => {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className={style.form} onSubmit={submitHandler}>
             <div>
-                <label>Name</label>
-                <input type='text' value={form.name} onChange={changeHandle} name= 'name'/>
+                <label className={style.label}>Name</label>
+                <input className={style.input} type='text' value={form.name} onChange={changeHandle} name= 'name'/>
                 <span>{errors.name}</span>
             </div>
             <div>
-                <label>Image</label>
-                <input type='text' value={form.image} onChange={changeHandle} name= 'image'/>
+                <label className={style.label}>Image</label>
+                <input className={style.input} type='text' value={form.image} onChange={changeHandle} name= 'image'/>
                 <span>{errors.image}</span>
             </div>
             <div>
-                <label>Life</label>
-                <input type='text' value={form.life} onChange={changeHandle} name= 'life'/>
+                <label className={style.label}>Life</label>
+                <input className={style.input} type='text' value={form.life} onChange={changeHandle} name= 'life'/>
                 <span>{errors.life}</span>
             </div>
             <div>
-                <label>Attack</label>
-                <input type='text' value={form.attack} onChange={changeHandle} name= 'attack'/>
+                <label className={style.label}>Attack</label>
+                <input className={style.input} type='text' value={form.attack} onChange={changeHandle} name= 'attack'/>
                 <span>{errors.attack}</span>
             </div>
             <div>
-                <label>Defense</label>
-                <input type='text' value={form.defense} onChange={changeHandle} name= 'defense'/>
+                <label className={style.label}>Defense</label>
+                <input className={style.input} type='text' value={form.defense} onChange={changeHandle} name= 'defense'/>
                 <span>{errors.defense}</span>
             </div>
             <div>
-                <label>Speed</label>
-                <input type='text' value={form.speed} onChange={changeHandle} name= 'speed'/>
+                <label className={style.label}>Speed</label>
+                <input className={style.input} type='text' value={form.speed} onChange={changeHandle} name= 'speed'/>
                 <span>{errors.speed}</span>
             </div>
             <div>
-                <label>Height</label>
-                <input type='text' value={form.height} onChange={changeHandle} name= 'height'/>
+                <label className={style.label}>Height</label>
+                <input className={style.input} type='text' value={form.height} onChange={changeHandle} name= 'height'/>
                 <span>{errors.height}</span>
             </div>
             <div>
-                <label>Weight</label>
-                <input type='text' value={form.weight} onChange={changeHandle} name= 'weight'/>
+                <label className={style.label}>Weight</label>
+                <input className={style.input} type='text' value={form.weight} onChange={changeHandle} name= 'weight'/>
                 <span>{errors.weight}</span>
             </div>
             
-            <div>
-                <label>Select Types</label>
-                <div> 
+            <div className={style.types}>
+                <label className={style.label}>Select Types</label>
+                <div className={style.types}> 
                     {types.map((type) => //este fragmento de código genera una lista de tipos de Pokémon con checkboxes, permitiendo al usuario seleccionar hasta 2 tipos. Los cambios en la selección se reflejan en el estado selectedTypes utilizando la función setSelectedTypes.
-                    <div key={type.id}>
-                        <p>{type.name}</p>
+                    <div className={style.types} key={type.id}>
+                        <p className={style.label}>{type.name}</p>
                         <input type= 'checkbox' name={`type-${type.id}`} // checkbox muestra opciones multiples de una casilla de verificacion y name proporciona una identificacion unica a cada checkbox
                         checked={selectedTypes.some(t => t.id === type.id)} // se utiliza para determinar si el checkbox debe estar marcado o no. ".some()" Se utiliza para verificar si al menos un elemento del array cumple con una condición específica.
                         onChange={(e) => {

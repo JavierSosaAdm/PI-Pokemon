@@ -10,10 +10,18 @@
     margin-bottom: 1.5rem;
     height: 2.5rem;
     width: 6rem;
+    background-image: url('https://lh3.googleusercontent.com/05JfZ1ZdyzrRNvhJosUFdcjjJRFE7k2KhmeM2ujqeCbrcrCb1hkq7O_JdUBpQ3r9hi0YeSn4WgmKx3Ai8LHdM2SucxSzl9TRZ4fCAqETJ6WtHgE=w1440-e365')
 }
 
 .home:hover {
-    background-color:red;
     transform: scale(1.2);
     transition: 0.3s;
 }
+
+.filters {
+    position: relative;
+    border-radius: 3rem;
+    
+}
+
+ 

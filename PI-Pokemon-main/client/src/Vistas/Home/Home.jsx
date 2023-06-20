@@ -32,8 +32,8 @@ const Home = () => {
     }, [dispatch, name, currentPage, orderBy, sortBy, created, type]);
 
     return (
-        <div className={style.home}>
-            <Filters 
+        <div className={style.filters} >
+            <Filters className={style.filterItem}
                 orderBy={orderBy}
                 onOrderByChange={(newOrderBy) => setOrderBy(newOrderBy)}
                 sortBy={sortBy}

@@ -1,23 +1,21 @@
 .searchBar {
-    display: flex;
-    position: relative;
-    flex-direction: row;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    right: 6rem;
-    top: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchButton {
     border-radius: 15px;
     cursor: pointer;
-    font-family: OCR-A BT;
+    font-family:Arial, Helvetica, sans-serif;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 3px;
     padding-bottom: 3px;
     border-left: 4rem;
     margin-bottom: 1.5rem;
+    font-size: 16px;
+
  }
 
  .searchButton:hover {

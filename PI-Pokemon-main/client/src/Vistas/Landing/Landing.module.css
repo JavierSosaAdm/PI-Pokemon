@@ -2,31 +2,33 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* flex-wrap: */
     text-align: center;
-    background-image: url(../../../../pokemon.png);
+    align-items: center;
+    flex-direction: column;
+    background-image: url(https://lh3.googleusercontent.com/05JfZ1ZdyzrRNvhJosUFdcjjJRFE7k2KhmeM2ujqeCbrcrCb1hkq7O_JdUBpQ3r9hi0YeSn4WgmKx3Ai8LHdM2SucxSzl9TRZ4fCAqETJ6WtHgE=w1440-e365);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     margin: 0;
-    font-size: medium;
+    font-size: large;
+    color: #232129;
+    font-family: -apple-system, Roboto, sans-serif, serif;
+    min-height: 90vh;
 }
 
-.p{
-    position: relative;
-    display: flex;
-    color: red;
-    font-size: 16px;
+.api{
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .welcome{
-    position: relative;
-    display: flex;
-    align-self: center;
     transform: rotate(360deg);
+    align-self: center;
     transition: 0.5s;
     cursor: pointer;
+    font-size: large;
  }
 
 .button{

@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './filters.module.css';
 
 const Filters = ({
     orderBy, 
@@ -19,8 +20,8 @@ const Filters = ({
         // allTypes.push(...types);
 
         return (
-            <div>
-                <select value={orderBy} onChange={(e) => {
+            <div className={style.div}>
+                <select className={style.select} value={orderBy} onChange={(e) => {
                     onOrderByChange(e.target.value)
                 }}>
                     <option value="name">Name</option>
@@ -32,14 +33,14 @@ const Filters = ({
                     <option value="weight">Weight</option>
                 </select>
 
-                <select value={sortBy} onChange={(e) => {
+                <select className={style.select} value={sortBy} onChange={(e) => {
                     onSortByChange(e.target.value)
                 }}>
                     <option value="ASC">Ascendent</option>
                     <option value="DESC">Descendent</option>
                 </select>
 
-                <select value={created} onChange={(e) => {
+                <select className={style.select} value={created} onChange={(e) => {
                     onCreatedChange(e.target.value)
                 }}>
                     <option key="created-all" value="all">All</option>
@@ -47,7 +48,7 @@ const Filters = ({
                     <option value="api">API</option>
                 </select>
 
-                {types && <select value={type} onChange={(e) => {
+                {types && <select className={style.select} value={type} onChange={(e) => {
                     onTypeChange(e.target.value)
                 }}>
                     {allTypes.map(t => {

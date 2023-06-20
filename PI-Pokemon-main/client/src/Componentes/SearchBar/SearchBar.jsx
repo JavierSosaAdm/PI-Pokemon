@@ -17,7 +17,7 @@ const SearchBar = () => {
 
     return (
         <div className={style.searchBar} >
-            <input type="text" onChange={handleChange}/>
+            <input className={style.input} type="text" onChange={handleChange}/>
             <button className={style.searchButton} onClick={() => {
                 if (pokemonName?.length > 0) {
                     onSearch();

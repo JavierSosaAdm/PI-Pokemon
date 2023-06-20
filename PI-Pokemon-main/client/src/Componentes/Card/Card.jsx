@@ -1,5 +1,5 @@
-import style from './card.module.css'; 
 import { Link } from 'react-router-dom';
+import style from './card.module.css'; 
 
 const Card = ({pokemon}) => {
     return (

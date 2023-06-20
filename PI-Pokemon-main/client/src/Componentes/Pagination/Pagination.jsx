@@ -1,5 +1,5 @@
 import React from 'react';
-// import style from './pagination.module.css';
+import style from './pagination.module.css';
 
 const Pagination = ({ goToPrevPage, goToNextPage, goToPage, currentPage, lastPage }) => {
     const buttons = [];
@@ -10,9 +10,9 @@ const Pagination = ({ goToPrevPage, goToNextPage, goToPage, currentPage, lastPag
 
     return (
         <div>
-            <button onClick={goToPrevPage} disabled={currentPage === 0}>Before</button>
+            <button className={style.paginationButton} onClick={goToPrevPage} disabled={currentPage === 0}>Before</button>
             {buttons}
-            <button onClick={goToNextPage} disabled={currentPage === lastPage -1}>Next</button>
+            <button className={style.paginationButton} onClick={goToNextPage} disabled={currentPage === lastPage -1}>Next</button>
         </div>
     );
 };
