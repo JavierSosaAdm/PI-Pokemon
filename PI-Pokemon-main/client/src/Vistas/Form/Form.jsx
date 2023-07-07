@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
-import { GetTypes } from '../../Redux/Actions';
+import { getTypes } from '../../Redux/Actions';
 import axios from 'axios';
 import style from './form.module.css'; 
 
@@ -10,7 +10,7 @@ const Form = () => {
     const [selectedTypes, setSelectedTypes] = useState([]);
 
     useEffect(() => { // llama a getTypes con dispatch, cada vez que se monta componente o cambie el dispatch, para obtener tipos de poke y actualizar estado 
-        dispatch(GetTypes());
+        dispatch(getTypes());
     }, [dispatch]);
 
     const [form, setForm] = useState({
@@ -43,7 +43,7 @@ const Form = () => {
         validate({ ...form, [property]: value }); // valida la actualización de forminario
     };
 
-    const validate = (form) => { // validaciones de datos de form
+    const validate = (form) => { 
 
         let newErrors = {...errors}
 
@@ -106,43 +106,43 @@ const Form = () => {
     }
 
     return (
-        <form className={style.form} onSubmit={submitHandler}>
-            <div>
+        <form className={style.container} onSubmit={submitHandler}>
+            <div className={style.divOptin}>
                 <label className={style.label}>Name</label>
                 <input className={style.input} type='text' value={form.name} onChange={changeHandle} name= 'name'/>
                 <span>{errors.name}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Image</label>
                 <input className={style.input} type='text' value={form.image} onChange={changeHandle} name= 'image'/>
                 <span>{errors.image}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Life</label>
                 <input className={style.input} type='text' value={form.life} onChange={changeHandle} name= 'life'/>
                 <span>{errors.life}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Attack</label>
                 <input className={style.input} type='text' value={form.attack} onChange={changeHandle} name= 'attack'/>
                 <span>{errors.attack}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Defense</label>
                 <input className={style.input} type='text' value={form.defense} onChange={changeHandle} name= 'defense'/>
                 <span>{errors.defense}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Speed</label>
                 <input className={style.input} type='text' value={form.speed} onChange={changeHandle} name= 'speed'/>
                 <span>{errors.speed}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Height</label>
                 <input className={style.input} type='text' value={form.height} onChange={changeHandle} name= 'height'/>
                 <span>{errors.height}</span>
             </div>
-            <div>
+            <div className={style.divOptin}>
                 <label className={style.label}>Weight</label>
                 <input className={style.input} type='text' value={form.weight} onChange={changeHandle} name= 'weight'/>
                 <span>{errors.weight}</span>
@@ -171,7 +171,7 @@ const Form = () => {
                 </div>
             </div>
 
-            <button type='submit' disabled={ // desabilitar en caso de que pase alguna de esatas condiciones
+            <button className={style.button} type='submit' disabled={ // desabilitar en caso de que pase alguna de esatas condiciones
                 form.name === '' ||
                 errors.name !== '' ||
                 errors.image !== '' ||

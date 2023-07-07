@@ -7,11 +7,13 @@ const Nav = () => {
 
     return (
         <div className={styles.nav} >
-            <Link to='/home'><h2>HOME</h2></Link>
-                <SearchBar/>
             <button className={styles.button} >
-                <Link to='/create'><h2>Poke-Create</h2></Link>
+                <Link to='/create'><h2>POKE-CREATE</h2></Link>
             </button>    
+                <SearchBar/>
+            <button className={styles.button}>
+                <Link to='/home'><h2>HOME</h2></Link>
+            </button>
             
         </div>
     )

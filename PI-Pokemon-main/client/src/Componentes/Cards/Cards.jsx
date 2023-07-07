@@ -1,15 +1,15 @@
-// import style from './cards.module.css';
+import style from './cards.module.css';
 import Card from '../Card/Card';
-import { useSelector } from 'react-redux' 
+// import { useSelector } from 'react-redux' 
 
-const Cards = () => {
-
-    const {pokemons} = useSelector(state => state) //permite acceder al estado global y extraer datos específicos que son necesarios para el componente.
-
+const Cards = ({pokemon}) => {
+    console.log('pokemon desde cards', pokemon);
+    
     return (
         <>
-            <div>
-                {pokemons?.item.map(pokemon => {
+            <div className={style.container}>
+                {pokemon?.items.map((pokemon) => {
+                    // console.log(pokemons.items);
                     return <Card 
                     key = {pokemon.id}
                     pokemon = {pokemon}
@@ -20,5 +20,4 @@ const Cards = () => {
     )
 
 };
-
 export default Cards;

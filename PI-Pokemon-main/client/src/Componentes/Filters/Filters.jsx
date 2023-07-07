@@ -17,7 +17,7 @@ const Filters = ({
             name: 'All'
         }, ...types];
 
-        // allTypes.push(...types);
+        allTypes.push(...types);
 
         return (
             <div className={style.div}>
